@@ -1,0 +1,10 @@
+C:\Users\YaoRen\Desktop\DM\DM\obj\Debug\DM.csprojAssemblyReference.cache
+C:\Users\YaoRen\Desktop\DM\DM\obj\Debug\DM.Form1.resources
+C:\Users\YaoRen\Desktop\DM\DM\obj\Debug\DM.Properties.Resources.resources
+C:\Users\YaoRen\Desktop\DM\DM\obj\Debug\DM.csproj.GenerateResource.cache
+C:\Users\YaoRen\Desktop\DM\DM\obj\Debug\DM.csproj.CoreCompileInputs.cache
+C:\Users\YaoRen\Desktop\DM\DM\bin\Debug\DM.exe.config
+C:\Users\YaoRen\Desktop\DM\DM\bin\Debug\DM.exe
+C:\Users\YaoRen\Desktop\DM\DM\bin\Debug\DM.pdb
+C:\Users\YaoRen\Desktop\DM\DM\obj\Debug\DM.exe
+C:\Users\YaoRen\Desktop\DM\DM\obj\Debug\DM.pdb
