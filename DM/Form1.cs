@@ -46,7 +46,8 @@ namespace DataMining
 
             ser.Points.AddXY(1, 2);
             ser.Points.AddXY(4, 9);
-             
+            
+
 
             this.chart1.Series.Add(ser);//將線畫在圖上
             this.chart1.Series.Add(ACenter);
@@ -60,7 +61,7 @@ namespace DataMining
             ser.Points[4].Color = Color.Red;
             ser.Points[5].Color = Color.Red;
             ser.Points[6].Color = Color.Green;
-            ser.Points[7].Color = Color.Green;        
+            ser.Points[7].Color = Color.Green;
         }
 
 
@@ -160,40 +161,24 @@ namespace DataMining
                 ser.Points[i].Color = Color.Black;
             }
 
-            for (int i = 0; i < ser.Points.Count; i++)                                                            //存放每一點到A中心的距離
+            for (int i = 0; i < ser.Points.Count; i++)                      //存放每一點到A中心的距離
             {
                 dislist.Add(Math.Sqrt(Math.Pow(ser.Points[i].XValue - ACenter.Points[0].XValue, 2)
                     + Math.Pow(ser.Points[i].YValues[0] - ACenter.Points[0].YValues[0], 2)));
             }
-            MessageBox.Show("" + dislist[0] + "\n" + dislist[1] + "\n" + dislist[2] + "\n" + dislist[3] + "\n" + dislist[4] + "\n" + dislist[5] + "\n" + dislist[6] + "\n" + dislist[7] + "\n");
 
-            for (int i = 0; i < dislist.Count; i++)                        
+            for(int i = 0; i < 3; i++)                //A群要找出幾個Point
             {
-                if(dislist.Min() == dislist[i])             //找出距離最短的第一點
+                for (int j = 0; j < dislist.Count; j++)
                 {
-                    ser.Points[i].Color = Color.Blue;
-                    dislist[i] = dislist.Max();
-                    break;
+                    if (dislist.Min() == dislist[j])             //找出距離最短的點
+                    {
+                        ser.Points[j].Color = Color.Blue;
+                        dislist[j] = dislist.Max();
+                        break;
+                    }
                 }
-            }
-            for (int i = 0; i < dislist.Count; i++)
-            {
-                if (dislist.Min() == dislist[i])             //第二點
-                {
-                    ser.Points[i].Color = Color.Blue;
-                    dislist[i] = dislist.Max();
-                    break;
-                }
-            }
-            for (int i = 0; i < dislist.Count; i++)
-            {
-                if (dislist.Min() == dislist[i])                //第三點
-                {
-                    ser.Points[i].Color = Color.Blue;
-                    dislist[i] = dislist.Max();
-                    break;
-                }
-            }
+            } 
             dislist.Clear();               
 
             for (int i = 0; i < ser.Points.Count; i++)                                                            
@@ -205,37 +190,21 @@ namespace DataMining
                 }
                 else
                 {
-                    dislist.Add(100000);                                     //若以分群 存放1000000
+                    dislist.Add(100000);                                     //若已分群 存放1000000
                 }
                 
             }
-            //MessageBox.Show("" + dislist[0] + "\n" + dislist[1] + "\n" + dislist[2] + "\n" + dislist[3] + "\n" + dislist[4] + "\n" + dislist[5] + "\n" + dislist[6] + "\n" + dislist[7] + "\n");
 
-            for (int i = 0; i < dislist.Count; i++)                   //第一點
+            for (int i = 0; i < 3; i++)                //B群要找出幾個Point
             {
-                if (dislist.Min() == dislist[i])
+                for (int j = 0; j < dislist.Count; j++)
                 {
-                    ser.Points[i].Color = Color.Red;
-                    dislist[i] = dislist.Max();
-                    break;
-                }
-            } 
-            for (int i = 0; i < dislist.Count; i++)                  //第二點
-            {
-                if (dislist.Min() == dislist[i])
-                {
-                    ser.Points[i].Color = Color.Red;
-                    dislist[i] = dislist.Max();
-                    break;
-                }
-            }
-            for (int i = 0; i < dislist.Count; i++)                //第三點
-            {
-                if (dislist.Min() == dislist[i])
-                {
-                    ser.Points[i].Color = Color.Red;
-                    dislist[i] = dislist.Max();
-                    break;
+                    if (dislist.Min() == dislist[j])             //找出距離最短的點
+                    {
+                        ser.Points[j].Color = Color.Red;
+                        dislist[j] = dislist.Max();
+                        break;
+                    }
                 }
             }
             dislist.Clear();
@@ -264,5 +233,6 @@ namespace DataMining
             BCenter.Points.Clear();
             CCenter.Points.Clear();
         }
+
     }
 }

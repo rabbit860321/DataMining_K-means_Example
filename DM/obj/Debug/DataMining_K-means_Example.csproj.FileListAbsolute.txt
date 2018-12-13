@@ -8,3 +8,13 @@ C:\Users\YaoRen\Desktop\DataMining_K-means_Example\DM\bin\Debug\DataMining_K-mea
 C:\Users\YaoRen\Desktop\DataMining_K-means_Example\DM\bin\Debug\DataMining_K-means_Example.pdb
 C:\Users\YaoRen\Desktop\DataMining_K-means_Example\DM\obj\Debug\DataMining_K-means_Example.exe
 C:\Users\YaoRen\Desktop\DataMining_K-means_Example\DM\obj\Debug\DataMining_K-means_Example.pdb
+D:\DataMining_K-means_Example\DM\obj\Debug\DataMining_K-means_Example.csprojAssemblyReference.cache
+D:\DataMining_K-means_Example\DM\obj\Debug\DataMining.Form1.resources
+D:\DataMining_K-means_Example\DM\obj\Debug\DataMining.Properties.Resources.resources
+D:\DataMining_K-means_Example\DM\obj\Debug\DataMining_K-means_Example.csproj.GenerateResource.cache
+D:\DataMining_K-means_Example\DM\obj\Debug\DataMining_K-means_Example.csproj.CoreCompileInputs.cache
+D:\DataMining_K-means_Example\DM\obj\Debug\DataMining_K-means_Example.exe
+D:\DataMining_K-means_Example\DM\obj\Debug\DataMining_K-means_Example.pdb
+D:\DataMining_K-means_Example\DM\bin\Debug\DataMining_K-means_Example.exe.config
+D:\DataMining_K-means_Example\DM\bin\Debug\DataMining_K-means_Example.exe
+D:\DataMining_K-means_Example\DM\bin\Debug\DataMining_K-means_Example.pdb
