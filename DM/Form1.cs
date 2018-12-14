@@ -17,10 +17,11 @@ namespace DataMining
         Series ACenter = new Series("A center");
         Series BCenter = new Series("B center");
         Series CCenter = new Series("C center");
+        Random rnd = new Random();
 
-        List<double> dislist = new List<double>();  //距離陣列
-
-
+        List<double> Adislist = new List<double>();  //距離陣列
+        List<double> Bdislist = new List<double>();  //距離陣列
+        List<double> Cdislist = new List<double>();  //距離陣列
 
         public Form1() 
         {
@@ -46,22 +47,21 @@ namespace DataMining
 
             ser.Points.AddXY(1, 2);
             ser.Points.AddXY(4, 9);
-            
 
+            ACenter.Points.AddXY(rnd.Next(1,9), rnd.Next(1,10));
+            BCenter.Points.AddXY(rnd.Next(1,9), rnd.Next(1,10));
+            CCenter.Points.AddXY(rnd.Next(1,9), rnd.Next(1,10));
+
+            for(int i = 0; i < 8; i++)
+            {
+                ser.Points[i].Color = Color.Black;
+            }
 
             this.chart1.Series.Add(ser);//將線畫在圖上
             this.chart1.Series.Add(ACenter);
             this.chart1.Series.Add(BCenter);
             this.chart1.Series.Add(CCenter);
 
-            ser.Points[0].Color = Color.Blue;
-            ser.Points[1].Color = Color.Blue;
-            ser.Points[2].Color = Color.Blue;
-            ser.Points[3].Color = Color.Red;
-            ser.Points[4].Color = Color.Red;
-            ser.Points[5].Color = Color.Red;
-            ser.Points[6].Color = Color.Green;
-            ser.Points[7].Color = Color.Green;
         }
 
 
@@ -99,12 +99,11 @@ namespace DataMining
             point.MarkerStyle = MarkerStyle.Star5;  //Point圓圈表示
             point.MarkerSize = 20;  //圓圈大小  
         }
+       
 
         public void button1_Click(object sender, EventArgs e) 
         {
-            ACenter.Points.Clear();
-            BCenter.Points.Clear();
-            CCenter.Points.Clear();
+
             double Ax = 0;               //Ax A中心 x座標
             double Ay = 0;               //Ay A中心 y座標
             double Bx = 0;
@@ -112,127 +111,95 @@ namespace DataMining
             double Cx = 0;
             double Cy = 0;
 
+            int a_count = 0;
+            int b_count = 0;
+            int c_count = 0;
+
             for (int i = 0; i < ser.Points.Count; i++)
             {
-                if(ser.Points[i].Color == Color.Blue)
+                if(ser.Points[i].Color == ACenter.Color)
                 {
                     Ax += ser.Points[i].XValue;
                     Ay += ser.Points[i].YValues[0];
+                    a_count++;
                 }
-            }
-            Ax /= 3;                                //中心座標 = (x1+x2+x3)/3
-            Ay /= 3;
-            ACenter.Points.AddXY(Ax, Ay);
-            
-
-            for (int i = 0; i < ser.Points.Count; i++)
-            {
-                if (ser.Points[i].Color == Color.Red)
+                else if (ser.Points[i].Color == BCenter.Color)
                 {
                     Bx += ser.Points[i].XValue;
                     By += ser.Points[i].YValues[0];
+                    b_count++;
                 }
-            }
-            Bx /= 3;
-            By /= 3;
-            BCenter.Points.AddXY(Bx, By);
-            
-
-            
-            for (int i = 0; i < ser.Points.Count; i++)
-            {
-                if (ser.Points[i].Color == Color.Green)
+                else
                 {
                     Cx += ser.Points[i].XValue;
                     Cy += ser.Points[i].YValues[0];
+                    c_count++;
                 }
             }
-            Cx /= 2;
-            Cy /= 2;
-            CCenter.Points.AddXY(Cx, Cy);
-            
+            Ax /= a_count;
+            Ay /= a_count;
+            Bx /= b_count;                          
+            By /= b_count;
+            Cx /= c_count;                         
+            Cy /= c_count;
+            ACenter.Points[0].XValue = Ax;
+            ACenter.Points[0].YValues[0] = Ay;
+            BCenter.Points[0].XValue = Bx;
+            BCenter.Points[0].YValues[0] = By;
+            CCenter.Points[0].XValue = Cx;
+            CCenter.Points[0].YValues[0] = Cy;
         }
 
         
         private void button2_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < ser.Points.Count; i++)              //讓所有點設為黑色
+            double shortnum = 0;
+            for(int i = 0; i < ser.Points.Count; i++)                     //各點到A群心的距離
             {
-                ser.Points[i].Color = Color.Black;
-            }
-
-            for (int i = 0; i < ser.Points.Count; i++)                      //存放每一點到A中心的距離
-            {
-                dislist.Add(Math.Sqrt(Math.Pow(ser.Points[i].XValue - ACenter.Points[0].XValue, 2)
+                Adislist.Add(Math.Sqrt(Math.Pow(ser.Points[i].XValue - ACenter.Points[0].XValue, 2)//各點到A群心的距離
                     + Math.Pow(ser.Points[i].YValues[0] - ACenter.Points[0].YValues[0], 2)));
+                Bdislist.Add(Math.Sqrt(Math.Pow(ser.Points[i].XValue - BCenter.Points[0].XValue, 2)//各點到B群心的距離
+                    + Math.Pow(ser.Points[i].YValues[0] - BCenter.Points[0].YValues[0], 2)));
+                Cdislist.Add(Math.Sqrt(Math.Pow(ser.Points[i].XValue - CCenter.Points[0].XValue, 2)//各點到C群心的距離
+                    + Math.Pow(ser.Points[i].YValues[0] - CCenter.Points[0].YValues[0], 2)));
             }
 
-            for(int i = 0; i < 3; i++)                //A群要找出幾個Point
+            for(int i = 0; i < ser.Points.Count; i++)
             {
-                for (int j = 0; j < dislist.Count; j++)
-                {
-                    if (dislist.Min() == dislist[j])             //找出距離最短的點
-                    {
-                        ser.Points[j].Color = Color.Blue;
-                        dislist[j] = dislist.Max();
-                        break;
-                    }
-                }
-            } 
-            dislist.Clear();               
+                shortnum = Math.Min(Adislist[i], Math.Min(Bdislist[i], Cdislist[i]));     //找出該點到ABC群心最短距離
 
-            for (int i = 0; i < ser.Points.Count; i++)                                                            
-            {
-                if(ser.Points[i].Color == Color.Black)                       //只計算尚未分群的點與B中心距離
+                if(shortnum == Adislist[i])
                 {
-                    dislist.Add(Math.Sqrt(Math.Pow(ser.Points[i].XValue - BCenter.Points[0].XValue, 2)
-                    + Math.Pow(ser.Points[i].YValues[0] - BCenter.Points[0].YValues[0], 2)));
+                    ser.Points[i].Color = ACenter.Color;
+                }else if(shortnum == Bdislist[i])
+                {
+                    ser.Points[i].Color = BCenter.Color;
                 }
                 else
                 {
-                    dislist.Add(100000);                                     //若已分群 存放1000000
+                    ser.Points[i].Color = CCenter.Color;
                 }
-                
             }
 
-            for (int i = 0; i < 3; i++)                //B群要找出幾個Point
-            {
-                for (int j = 0; j < dislist.Count; j++)
-                {
-                    if (dislist.Min() == dislist[j])             //找出距離最短的點
-                    {
-                        ser.Points[j].Color = Color.Red;
-                        dislist[j] = dislist.Max();
-                        break;
-                    }
-                }
-            }
-            dislist.Clear();
-
-            for (int i = 0; i < ser.Points.Count; i++)                           //其餘就是C群
-            {
-                if(ser.Points[i].Color == Color.Black)
-                {
-                    ser.Points[i].Color = Color.Green;
-                }
-            }
+            Adislist.Clear();
+            Bdislist.Clear();
+            Cdislist.Clear();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ser.Points[0].Color = Color.Blue;
-            ser.Points[1].Color = Color.Blue;
-            ser.Points[2].Color = Color.Blue;
-            ser.Points[3].Color = Color.Red;
-            ser.Points[4].Color = Color.Red;
-            ser.Points[5].Color = Color.Red;
-            ser.Points[6].Color = Color.Green;
-            ser.Points[7].Color = Color.Green;
+            for (int i = 0; i < 8; i++)
+            {
+                ser.Points[i].Color = Color.Black;
+            }
 
             ACenter.Points.Clear();
             BCenter.Points.Clear();
             CCenter.Points.Clear();
-        }
 
+            ACenter.Points.AddXY(rnd.Next(1, 9), rnd.Next(1, 10));
+            BCenter.Points.AddXY(rnd.Next(1, 9), rnd.Next(1, 10));
+            CCenter.Points.AddXY(rnd.Next(1, 9), rnd.Next(1, 10));
+        }
     }
 }
