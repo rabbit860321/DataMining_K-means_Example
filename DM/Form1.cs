@@ -48,9 +48,9 @@ namespace DataMining
             ser.Points.AddXY(1, 2);
             ser.Points.AddXY(4, 9);
 
-            ACenter.Points.AddXY(rnd.Next(1,9), rnd.Next(1,10));
-            BCenter.Points.AddXY(rnd.Next(1,9), rnd.Next(1,10));
-            CCenter.Points.AddXY(rnd.Next(1,9), rnd.Next(1,10));
+            ACenter.Points.AddXY(rnd.Next(1,9), rnd.Next(2,11));
+            BCenter.Points.AddXY(rnd.Next(1,9), rnd.Next(2,11));
+            CCenter.Points.AddXY(rnd.Next(1,9), rnd.Next(2,11));
 
             for(int i = 0; i < 8; i++)
             {
@@ -175,7 +175,7 @@ namespace DataMining
                 {
                     ser.Points[i].Color = BCenter.Color;
                 }
-                else
+                else if(shortnum == Cdislist[i])
                 {
                     ser.Points[i].Color = CCenter.Color;
                 }
@@ -197,9 +197,9 @@ namespace DataMining
             BCenter.Points.Clear();
             CCenter.Points.Clear();
 
-            ACenter.Points.AddXY(rnd.Next(1, 9), rnd.Next(1, 10));
-            BCenter.Points.AddXY(rnd.Next(1, 9), rnd.Next(1, 10));
-            CCenter.Points.AddXY(rnd.Next(1, 9), rnd.Next(1, 10));
+            ACenter.Points.AddXY(rnd.Next(1, 9), rnd.Next(2, 11));
+            BCenter.Points.AddXY(rnd.Next(1, 9), rnd.Next(2, 11));
+            CCenter.Points.AddXY(rnd.Next(1, 9), rnd.Next(2, 11));
         }
     }
 }

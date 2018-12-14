@@ -32,8 +32,8 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.findCenterbtn = new System.Windows.Forms.Button();
+            this.allocationBtn = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
@@ -53,27 +53,26 @@
             this.chart1.Size = new System.Drawing.Size(664, 368);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
-            
             // 
-            // button1
+            // findCenterbtn
             // 
-            this.button1.Location = new System.Drawing.Point(23, 409);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(159, 48);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "找中心點";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.findCenterbtn.Location = new System.Drawing.Point(23, 409);
+            this.findCenterbtn.Name = "findCenterbtn";
+            this.findCenterbtn.Size = new System.Drawing.Size(159, 48);
+            this.findCenterbtn.TabIndex = 1;
+            this.findCenterbtn.Text = "找群中心點";
+            this.findCenterbtn.UseVisualStyleBackColor = true;
+            this.findCenterbtn.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // allocationBtn
             // 
-            this.button2.Location = new System.Drawing.Point(188, 409);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(159, 48);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "分群";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.allocationBtn.Location = new System.Drawing.Point(188, 409);
+            this.allocationBtn.Name = "allocationBtn";
+            this.allocationBtn.Size = new System.Drawing.Size(159, 48);
+            this.allocationBtn.TabIndex = 2;
+            this.allocationBtn.Text = "分群";
+            this.allocationBtn.UseVisualStyleBackColor = true;
+            this.allocationBtn.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -91,8 +90,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(883, 540);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.allocationBtn);
+            this.Controls.Add(this.findCenterbtn);
             this.Controls.Add(this.chart1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -104,8 +103,8 @@
         #endregion
 
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button findCenterbtn;
+        private System.Windows.Forms.Button allocationBtn;
         private System.Windows.Forms.Button button3;
     }
 }
