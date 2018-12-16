@@ -34,7 +34,7 @@
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.findCenterbtn = new System.Windows.Forms.Button();
             this.allocationBtn = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.restart = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,13 +56,13 @@
             // 
             // findCenterbtn
             // 
-            this.findCenterbtn.Location = new System.Drawing.Point(23, 409);
+            this.findCenterbtn.Location = new System.Drawing.Point(188, 409);
             this.findCenterbtn.Name = "findCenterbtn";
             this.findCenterbtn.Size = new System.Drawing.Size(159, 48);
             this.findCenterbtn.TabIndex = 1;
             this.findCenterbtn.Text = "找群中心點";
             this.findCenterbtn.UseVisualStyleBackColor = true;
-            this.findCenterbtn.Click += new System.EventHandler(this.button1_Click);
+            this.findCenterbtn.Click += new System.EventHandler(this.findCenterbtn_Click);
             // 
             // allocationBtn
             // 
@@ -72,24 +72,24 @@
             this.allocationBtn.TabIndex = 2;
             this.allocationBtn.Text = "分群";
             this.allocationBtn.UseVisualStyleBackColor = true;
-            this.allocationBtn.Click += new System.EventHandler(this.button2_Click);
+            this.allocationBtn.Click += new System.EventHandler(this.allocationBtn_Click);
             // 
-            // button3
+            // restart
             // 
-            this.button3.Location = new System.Drawing.Point(353, 409);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(159, 48);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "重新";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.restart.Location = new System.Drawing.Point(353, 409);
+            this.restart.Name = "restart";
+            this.restart.Size = new System.Drawing.Size(159, 48);
+            this.restart.TabIndex = 3;
+            this.restart.Text = "重新";
+            this.restart.UseVisualStyleBackColor = true;
+            this.restart.Click += new System.EventHandler(this.restart_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(883, 540);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.restart);
             this.Controls.Add(this.allocationBtn);
             this.Controls.Add(this.findCenterbtn);
             this.Controls.Add(this.chart1);
@@ -105,7 +105,7 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Button findCenterbtn;
         private System.Windows.Forms.Button allocationBtn;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button restart;
     }
 }
 

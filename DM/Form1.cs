@@ -28,6 +28,10 @@ namespace DataMining
             InitializeComponent();
             setchart();
 
+            findCenterbtn.Visible = false;
+            allocationBtn.Visible = true;
+            restart.Visible = true;
+
             ser.ChartType = SeriesChartType.Point; //設定Point種類
             ser.MarkerStyle = MarkerStyle.Circle;  //Point圓圈表示
             ser.MarkerSize = 10;  //圓圈大小  
@@ -101,8 +105,12 @@ namespace DataMining
         }
        
 
-        public void button1_Click(object sender, EventArgs e) 
+        public void findCenterbtn_Click(object sender, EventArgs e) 
         {
+
+            findCenterbtn.Visible = false;
+            allocationBtn.Visible = true;
+            restart.Visible = true;
 
             double Ax = 0;               //Ax A中心 x座標
             double Ay = 0;               //Ay A中心 y座標
@@ -151,8 +159,13 @@ namespace DataMining
         }
 
         
-        private void button2_Click(object sender, EventArgs e)
+        private void allocationBtn_Click(object sender, EventArgs e)
         {
+
+            findCenterbtn.Visible = true;
+            allocationBtn.Visible = false;
+            restart.Visible = true;
+
             double shortnum = 0;
             for(int i = 0; i < ser.Points.Count; i++)                     //各點到A群心的距離
             {
@@ -186,20 +199,25 @@ namespace DataMining
             Cdislist.Clear();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void restart_Click(object sender, EventArgs e)
         {
+
+            findCenterbtn.Visible = false;
+            allocationBtn.Visible = true;
+            restart.Visible = true;
+
             for (int i = 0; i < 8; i++)
             {
                 ser.Points[i].Color = Color.Black;
             }
 
-            ACenter.Points.Clear();
-            BCenter.Points.Clear();
-            CCenter.Points.Clear();
+            ACenter.Points[0].XValue = rnd.Next(1, 9);
+            BCenter.Points[0].XValue = rnd.Next(1, 9);
+            CCenter.Points[0].XValue = rnd.Next(1, 9);
 
-            ACenter.Points.AddXY(rnd.Next(1, 9), rnd.Next(2, 11));
-            BCenter.Points.AddXY(rnd.Next(1, 9), rnd.Next(2, 11));
-            CCenter.Points.AddXY(rnd.Next(1, 9), rnd.Next(2, 11));
+            ACenter.Points[0].YValues[0] = rnd.Next(2, 11);
+            BCenter.Points[0].YValues[0] = rnd.Next(2, 11);
+            CCenter.Points[0].YValues[0] = rnd.Next(2, 11);
         }
     }
 }
